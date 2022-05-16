@@ -15,8 +15,9 @@ class ProductsController extends BaseController
        $productService= new ProductService();
        $data=$productService->getProducts();
        foreach ($data as $product){
-           var_dump($product);die;
+           var_dump($product);
        }
+       die;
         $this->view('posts/index', $data);
 	}
 }

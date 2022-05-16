@@ -8,10 +8,10 @@ class ProductRepository
 {
     public function getProducts(){
         $db=new Database();
-        $db->query('SELECT products.id as product_id,
-		products.name as product_name,
-		products.sku as product_sku,
-		products.price as product_price,
+        $db->query('SELECT products.id as id,
+		products.name as name,
+		products.sku as sku,
+		products.price as price,
 		product_types.id as product_type_id,
 		product_types.name as product_type_name,
 		attributes.name as attribute_name,
@@ -28,15 +28,7 @@ class ProductRepository
 		INNER JOIN product_attributes_values ON product_attributes_values.product_id=products.id
 		'
         );
-        $results = $db->resultSet();
-        echo '<pre>';
-        var_dump($results);
-        echo '</pre>';
-        die;
-        $product=new Product();
-        foreach ($results as $result){
-            $product->setId($result->product_id);
-        }
+        $results=$db->getResultsByClass(new Product());
         return $results;
     }
 }

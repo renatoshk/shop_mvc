@@ -1,6 +1,7 @@
 <?php
 namespace App\Libraries; 
 
+use App\Entities\Product;
 use \PDO;
 use PDOException;
 
@@ -71,6 +72,10 @@ class Database {
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+    public function getResultsByClass($class){
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_CLASS,get_class($class));
+    }
     //get single result 
 	public function singleRow(){
 		$this->execute();
