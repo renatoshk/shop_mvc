@@ -68,10 +68,14 @@ class Database {
 		return $this->stmt->execute();
 	}
 	//get results set as array of objects
-	public function resultSet(){
+	public function fetchObjects(){
 		$this->execute();
 		return $this->stmt->fetchAll(PDO::FETCH_OBJ);
 	}
+    public function fetchAssocArray(){
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getResultsByClass($class){
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_CLASS,get_class($class));

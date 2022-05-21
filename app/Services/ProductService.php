@@ -8,12 +8,15 @@ class ProductService
 {
     public function getProducts(){
         $productRepository=new ProductRepository();
-        $products=$productRepository->getProducts();
+        $products=$productRepository->all();
         foreach ($products as $product){
             echo '<pre>';
-            var_dump($product->currency_name);
+            var_dump($product);die;
             echo '</pre>';
         }
+        echo '<pre>';
+        var_dump($products);
+        echo '</pre>';
         die;
         return $products;
     }

@@ -8,6 +8,7 @@ class ProductType
 {
 	private $id;
 	private $name;
+	private $attributes;
 	//id property
     public function getId()
     {
@@ -23,5 +24,10 @@ class ProductType
     }
     public function setName($name){
         $this->name = $name;
+    }
+    //relations
+    //attributes
+    public function attributes($attributes){
+        $this->attributes=$attributes;
     }
 }

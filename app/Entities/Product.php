@@ -10,6 +10,8 @@ class Product
 	private $name;
 	private $sku;
 	private $price;
+	private $productType;
+	private $currency;
 	//id property
     public function getId()
     {
@@ -40,4 +42,18 @@ class Product
     public function setPrice($price){
         $this->price = $price;
     }
+    //relations
+    public function getProductType(){
+       return $this->productType;
+    }
+    public function setProductType(ProductType $productType){
+        $this->productType=$productType;
+    }
+    public function getCurrency(){
+        return $this->currency;
+    }
+    public function setCurrency(Currency $currency){
+        $this->currency=$currency;
+    }
+
 }

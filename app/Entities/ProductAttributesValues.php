@@ -6,10 +6,20 @@ namespace App\Entities;
  */
 class ProductAttributesValues
 {
+	private $id;
 	private $product_id;
 	private $attribute_id;
 	private $value;
 
+    //id property
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 	//product_id property
     public function getProductId()
     {

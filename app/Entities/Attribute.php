@@ -11,6 +11,7 @@ class Attribute
 	private $name;
 	private $unit;
 	private $description;
+	private $productAttributeValue;
 	//id property
     public function getId()
     {
@@ -49,5 +50,12 @@ class Attribute
     }
     public function setDescription($description){
         $this->description = $description;
+    }
+    //relations
+    public function getProductAttributeValue(){
+        return $this->productAttributeValue;
+    }
+    public function setProductAttributeValue(ProductAttributesValues $productAttributeValue){
+        $this->productAttributeValue=$productAttributeValue;
     }
 }
