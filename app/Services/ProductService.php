@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Entities\Product;
+use App\Models\ProductModel;
 use App\Repositories\ProductRepository;
 
 class ProductService
@@ -9,16 +10,12 @@ class ProductService
     public function getProducts(){
         $productRepository=new ProductRepository();
         $products=$productRepository->all();
+        $data=[];
         foreach ($products as $product){
-            echo '<pre>';
-            var_dump($product);die;
-            echo '</pre>';
+            $productModel=new ProductModel($product,$product->getCurrency(),$product->getProductType());
+            $data[$product->getId()]=$productModel;
         }
-        echo '<pre>';
-        var_dump($products);
-        echo '</pre>';
-        die;
-        return $products;
+        return $data;
     }
 
 }

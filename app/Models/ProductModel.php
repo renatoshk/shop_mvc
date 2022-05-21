@@ -13,17 +13,19 @@ class ProductModel
 {
     private $productId;
     private $sku;
-    private $productType;
+    private $productTypeName;
     private $price;
     private $symbol;
     private $attributes;
 
-    public function __construct(Product $product, Currency $currency, ProductType $productType, array $attributes)
+    public function __construct(Product $product, Currency $currency, ProductType $productType)
     {
         $this->setProductId($product->getId());
         $this->setSku($product->getSku());
         $this->setPrice($product->getPrice());
-        $this->setPrice($product->getPrice());
+        $this->setSymbol($currency->getSymbol());
+        $this->setProductTypeName($productType->getName());
+        $this->setAttributes($productType->getAttributes());
     }
     //product id
     public function getProductId(){
@@ -34,32 +36,26 @@ class ProductModel
     }
     //sku
     public function getSku(){
-        return $this->productId;
+        return $this->sku;
     }
     public function setSku($sku){
         $this->sku=$sku;
     }
     //price
     public function getPrice(){
-        return $this->productId;
+        return $this->price;
     }
     public function setPrice($price){
         $this->price=$price;
     }
     //product type
-    public function getProductType(){
-        return $this->productType;
+    public function getProductTypeName(){
+        return $this->productTypeName;
     }
-    public function setProductType(ProductType $productType){
-        $this->productType=$productType;
+    public function setProductTypeName($productTypeName){
+        $this->productTypeName=$productTypeName;
     }
     //currency
-    public function getCurrency(){
-        return $this->currency;
-    }
-    public function setCurrency(Currency $currency){
-        $this->currency=$currency;
-    }
     public function getSymbol(){
         return $this->symbol;
     }
@@ -71,6 +67,6 @@ class ProductModel
         return $this->attributes;
     }
     public function setAttributes($attributes){
-        return $this->attributes;
+        $this->attributes=$attributes;
     }
 }

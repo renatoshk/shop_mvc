@@ -25,9 +25,11 @@ class ProductType
     public function setName($name){
         $this->name = $name;
     }
-    //relations
-    //attributes
-    public function attributes($attributes){
+    //relations attributes
+    public function getAttributes(){
+        return $this->attributes;
+    }
+    public function setAttributes($attributes){
         $this->attributes=$attributes;
     }
 }

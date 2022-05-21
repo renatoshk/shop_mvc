@@ -75,7 +75,7 @@ class ProductRepository implements RepositoryInterface
             //prepare array of objects with, one to many relations between product type and attributes
             $attrs[$productType->getId()][]=$attribute;
             //fill objects with data
-            $productType->attributes($attrs);
+            $productType->setAttributes($attrs);
             $product->setCurrency($currency);
             $product->setProductType($productType);
             //set final result
