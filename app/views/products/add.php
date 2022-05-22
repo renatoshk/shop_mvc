@@ -1,33 +1,66 @@
 <?php require APPROOT . '/views/includes/header.php' ?>
-<section id="breadcrumbs" class="breadcrumbs">
-<div class="container">
-  <ol>
-    <li><a href="<?php echo URLROOT;?>/">Home</a></li>
-    <li>Add Post</li>
-  </ol>
-  <div class="row">
-      <div class="col-md-6 mx-auto">
-        <a href="<?php echo URLROOT; ?>/posts" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
-        <div class="card card-body bg-light mt-5">
-          <h2>Add Post</h2>
-          <p>Create a post with this form</p>
-          <form action="<?php echo URLROOT; ?>/posts/add" method="post">
-            <div class="form-group">
-              <label for="title">Title: <sup>*</sup></label>
-              <input type="text" name="title" class="form-control form-control-lg <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>">
-              <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
+    <div class="container">
+        <form class="d-block">
+        <div class="pt-5 d-flex align-items-center justify-content-between">
+            <h1>Product Add</h1>
+            <div class="float-right" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success mr-2">Save</button>
+                <a class="btn btn-danger" href="<?php echo LINKROOT."products/index"?>" role="button">Cancel</a>
             </div>
-            <div class="form-group">
-              <label for="body">Body: <sup>*</sup></label>
-              <textarea name="body" class="form-control form-control-lg <?php echo (!empty($data['body_err'])) ? 'is-invalid' : ''; ?>"><?php echo $data['body']; ?></textarea>
-              <span class="invalid-feedback"><?php echo $data['body_err']; ?></span>
+        </div>
+            <hr>
+        <div class="product-details row mt-5">
+            <div class="col-dm-6 col-sm-6">
+                <div class="form-group d-flex align-items-center">
+                    <label for="sku">SKU</label>
+                    <input type="text" class="form-control ml-3" id="sku" aria-describedby="sku">
+                </div>
+                <div class="form-group d-flex align-items-center">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control ml-3" id="name">
+                </div>
+                <div class="form-group d-flex align-items-center">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control ml-3" id="price">
+                </div>
+                <div class="form-group d-flex align-items-center">
+                    <label for="price">Type Switcher</label>
+                    <select class="form-control">
+                        <option>Large select</option>
+                    </select>
+                </div>
             </div>
-            <br>
-            <input type="submit" class="btn btn-success" value="Submit">
-          </form>
-      </div>
-   </div>
-  </div>
-</div>
-  <br>
+        </div>
+            <div class="row card-detail-form">
+                <div class="col-sm-6 col-md-6 col-lg-6 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                           <table class="responsive w-100 mt-5 mb-5">
+                               <tbody class="w-100">
+                                   <tr>
+                                       <td>Height</td>
+                                       <td class="d-flex w-100 mb-3">
+                                           <input type="text" class="form-control ml-3" id="height">
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Width</td>
+                                       <td class="d-flex w-100 mb-3">
+                                           <input type="text" class="form-control ml-3" id="width">
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td>Lenght</td>
+                                       <td class="d-flex w-100 mb-3">
+                                           <input type="text" class="form-control ml-3" id="length">
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                            <p class="desc-product"> In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. </p>
+                        </div>
+                    </div>
+                </div></div>
+        </form>
+    </div>
 <?php require APPROOT . '/views/includes/footer.php' ?>

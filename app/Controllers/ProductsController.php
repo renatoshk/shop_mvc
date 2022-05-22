@@ -15,6 +15,13 @@ class ProductsController extends BaseController implements Controller
 	{
        $productService= new ProductService();
        $products=$productService->getProducts();
-       $this->view('products/index', $products);
+        $data = [
+            'products'=>$products
+        ];
+       $this->view('products/index', $data);
 	}
+	public function create(){
+	    $data=[];
+        $this->view('products/add', $data);
+    }
 }
