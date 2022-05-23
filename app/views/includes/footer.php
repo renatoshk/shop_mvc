@@ -9,9 +9,10 @@
         </div>
     </div>
   </footer>
+ </div>
  <!-- End Footer -->  <!-- Vendor JS Files -->
  <script src="<?php echo LINKROOT;?>assets/jQuery/jquery-3.6.0.min.js"></script>
  <script src="<?php echo LINKROOT;?>assets/bootstrap/js/bootstrap.min.js"></script>
- </div>
+ <script src="<?php echo LINKROOT;?>assets/js/main.js"></script>
 </body>
 </html>

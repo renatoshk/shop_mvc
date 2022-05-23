@@ -20,6 +20,12 @@
                             </div>
                             <h5 class="card-title text-center"><?php echo $product->getSku(); ?></h5>
                             <p class="card-text text-center"><?php echo $product->getProductTypeName(); ?></p>
+                            <p class="card-text text-center"><?php echo $product->getPrice();?>  <?php echo $product->getCurrencySymbol();  ?></p>
+                            <small class="card-text text-center">
+                            <?php foreach ($product->getAttributes()[$product->getProductTypeId()] as $attribute): ?>
+                                <?php echo $attribute->getName(); ?>: <?php echo $attribute->getProductAttributeValue()->getValue(); ?>  <?php echo $attribute->getUnit(); ?>
+                           <?php endforeach; ?>
+                            </small>
                         </div>
                     </div>
                 </div>

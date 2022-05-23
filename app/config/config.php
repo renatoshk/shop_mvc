@@ -9,6 +9,8 @@ const DB_NAME = 'shop';
 define('APPROOT', dirname(dirname(__FILE__)));
 //url root
 const URLROOT = 'http://localhost/shop';
+//API ROOT
+const APIURLROOT = 'http://localhost/shop/api';
 //site name
 const SITENAME = 'Blog';
 //link to define [public dir]

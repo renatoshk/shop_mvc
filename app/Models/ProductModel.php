@@ -13,6 +13,7 @@ class ProductModel
 {
     private $productId;
     private $sku;
+    private $productTypeId;
     private $productTypeName;
     private $price;
     private $symbol;
@@ -23,7 +24,8 @@ class ProductModel
         $this->setProductId($product->getId());
         $this->setSku($product->getSku());
         $this->setPrice($product->getPrice());
-        $this->setSymbol($currency->getSymbol());
+        $this->setCurrencySymbol($currency->getSymbol());
+        $this->setProductTypeId($productType->getId());
         $this->setProductTypeName($productType->getName());
         $this->setAttributes($productType->getAttributes());
     }
@@ -49,6 +51,12 @@ class ProductModel
         $this->price=$price;
     }
     //product type
+    public function getProductTypeId(){
+        return $this->productTypeId;
+    }
+    public function setProductTypeId($productTypeId){
+        $this->productTypeId=$productTypeId;
+    }
     public function getProductTypeName(){
         return $this->productTypeName;
     }
@@ -56,10 +64,10 @@ class ProductModel
         $this->productTypeName=$productTypeName;
     }
     //currency
-    public function getSymbol(){
+    public function getCurrencySymbol(){
         return $this->symbol;
     }
-    public function setSymbol($symbol){
+    public function setCurrencySymbol($symbol){
         $this->symbol = $symbol;
     }
     //attribute
