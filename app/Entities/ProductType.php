@@ -8,7 +8,7 @@ class ProductType
 {
 	private $id;
 	private $name;
-	private $attributes;
+	private $attributes=[];
 	//id property
     public function getId()
     {
@@ -31,5 +31,8 @@ class ProductType
     }
     public function setAttributes($attributes){
         $this->attributes=$attributes;
+    }
+    public function setAttribute(Attribute $attribute){
+        $this->attributes[]=$attribute;
     }
 }

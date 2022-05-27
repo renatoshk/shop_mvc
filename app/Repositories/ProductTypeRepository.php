@@ -22,4 +22,10 @@ class ProductTypeRepository implements RepositoryInterface
         }
        return $data;
     }
+    public function find($id){
+        $db=new Database();
+        $db->query("SELECT * FROM product_types WHERE id=:id");
+        $db->bind(':id',$id);
+        return $db->getSingleObjectResult(new ProductType());
+    }
 }

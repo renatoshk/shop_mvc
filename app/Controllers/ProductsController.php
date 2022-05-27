@@ -2,8 +2,10 @@
 namespace App\Controllers;
 
 use App\Controllers\Interfaces\Controller;
+use App\Helpers\Helper;
 use App\Libraries\BaseController;
 
+use App\Models\ProductCreationModel;
 use App\Services\ProductService;
 use App\Services\ProductTypeService;
 
@@ -27,6 +29,20 @@ class ProductsController extends BaseController implements Controller
         $this->view('products/add', $data);
     }
     public function store(){
-	    var_dump('store');die;
+        try {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                //init
+                $helper=new Helper();
+                $data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $productService=new ProductService();
+                if($productService->save($data)){
+                    $helper->redirect('products');
+                }else{
+                    return false;
+                }
+            }
+        }catch (\Exception $e){
+            return $e->getCode();
+        }
     }
 }

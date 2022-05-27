@@ -9,17 +9,19 @@ use App\Entities\ProductType;
 
 class AttributeModel
 {
-    private $attributeId;
-    private $productTypeId;
-    private $attributeName;
-    private $attributeDescription;
-    private $attributeUnit;
+    public $attributeId;
+    public $productTypeId;
+    public $attributeName;
+    public $attributeType;
+    public $attributeDescription;
+    public $attributeUnit;
 
     public function __construct(Attribute $attribute)
     {
         $this->setAttributeId($attribute->getId());
         $this->setProductTypeId($attribute->getProductTypeId());
         $this->setAttributeName($attribute->getName());
+        $this->setAttributeType($attribute->getType());
         $this->setAttributeDescription($attribute->getDescription());
         $this->setAttributeUnit($attribute->getUnit());
 
@@ -44,6 +46,13 @@ class AttributeModel
     }
     public function setAttributeName($attributeName){
         $this->attributeName=$attributeName;
+    }
+    //atribute type
+    public function getAttributeType(){
+        return $this->attributeType;
+    }
+    public function setAttributeType($attributeType){
+        $this->attributeType=$attributeType;
     }
     //attribute description
     public function getAttributeDescription(){

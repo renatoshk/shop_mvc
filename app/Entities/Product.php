@@ -7,6 +7,8 @@ namespace App\Entities;
 class Product
 {
 	private $id;
+	private $currencyId;
+	private $productTypeId;
 	private $name;
 	private $sku;
 	private $price;
@@ -20,6 +22,24 @@ class Product
     public function setId($id)
     {
         $this->id = $id;
+    }
+    //currency id property
+    public function getCurrencyId()
+    {
+        return $this->currencyId;
+    }
+    public function setCurrencyId($currencyId)
+    {
+        $this->currencyId = $currencyId;
+    }
+    //product type id property
+    public function getProductTypeId()
+    {
+        return $this->productTypeId;
+    }
+    public function setProductTypeId($productTypeId)
+    {
+        $this->productTypeId = $productTypeId;
     }
 	//name property
     public function getName(){

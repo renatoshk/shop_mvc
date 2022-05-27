@@ -12,5 +12,9 @@ class Helper
         }
         return false;
     }
+    //redirect function
+    public function redirect($location){
+        header('Location: ' . URLROOT . '/' . $location);
+    }
 
 }

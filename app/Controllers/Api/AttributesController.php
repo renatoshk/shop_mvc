@@ -13,8 +13,7 @@ class AttributesController extends BaseController
         try {
             $attributesService=new AttributesService();
             $data=$attributesService->getAttributesByProductTypeId($productTypeId);
-            var_dump($data);die;
-            return json_encode($data);
+            echo json_encode($data);
         }catch (\Exception $e){
             return json_encode(array(
                 'error' => array(
@@ -24,5 +23,4 @@ class AttributesController extends BaseController
             ));
         }
     }
-
 }

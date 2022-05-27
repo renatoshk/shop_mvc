@@ -28,16 +28,11 @@ class CoreApi
             unset($url[0]);
             unset($url[1]);
         }
-        //require the controller
-        // require_once '../app/controllers/' . $this->currentController .'Controller'.'.php';
-        //instantiate controller class
-
         $this->currentController = $this->currentController.'Controller';
         $path =  'App"Controllers"Api"'.$this->currentController;
         $path = addslashes($path);
         $path = str_replace('"', '', $path);
         $this->currentController = new $path();
-
         //check for second part of url
         if(isset($url[2])){
             //check if method exists

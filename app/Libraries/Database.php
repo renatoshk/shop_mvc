@@ -83,12 +83,22 @@ class Database {
     //get single result 
 	public function singleRow(){
 		$this->execute();
-		return $this->stmt->fetch(PDO::FETCH_OBJ);
+		return $this->stmt->fetch(PDO::FETCH_ASSOC);
 	}
+	//get single object result
+    public function getSingleObjectResult($class){
+        $this->execute();
+        return $this->stmt->fetchObject(get_class($class));
+    }
 	//get row Count
 	public function rowCount(){
 		return $this->stmt->rowCount();
 	}
-} 
+	//function to get last id of inserted
+    public function getLastInsertedId(){
+        $this->execute();
+        return $this->dbh->lastInsertId();
+    }
+}
 
  ?>

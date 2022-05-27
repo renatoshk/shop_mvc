@@ -9,6 +9,7 @@ class Attribute
 	private $id;
 	private $product_type_id;
 	private $name;
+	private $type;
 	private $unit;
 	private $description;
 	private $productAttributeValue;
@@ -36,6 +37,13 @@ class Attribute
     }
     public function setName($name){
         $this->name = $name;
+    }
+    //type property
+    public function getType(){
+        return $this->type;
+    }
+    public function setType($type){
+        $this->type = $type;
     }
     //symbol property
     public function getUnit(){

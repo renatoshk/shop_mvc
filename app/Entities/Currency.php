@@ -6,17 +6,17 @@ namespace App\Entities;
  */
 class Currency
 {
-	private $currency_id;
+	private $id;
 	private $name;
 	private $symbol;
 	//id property
     public function getId()
     {
-        return $this->currency_id;
+        return $this->id;
     }
     public function setId($id)
     {
-        $this->currency_id = $id;
+        $this->id = $id;
     }
 	//name property
     public function getName(){
