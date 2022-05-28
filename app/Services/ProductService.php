@@ -60,10 +60,18 @@ class ProductService
     }
     //mass delete function
     public function bulkDestroy($ids){
-//        $ids=implode(',',$ids);
         $productRepository=new ProductRepository();
-        if($productsIds=$productRepository->findByIds($ids)){
-
+        $productIds=[];
+        //find ids which exists on database
+        if($products=$productRepository->findByIds($ids,'id')){
+           foreach ($products as $product){
+               $productIds[]=$product->getId();
+           }
+           if($productRepository->bulkDestroy($productIds)){
+               //if mass delete is successfully, return product ids to remove from front end
+               return $productIds;
+           }
+            return false;
         }
         return false;
     }

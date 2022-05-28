@@ -12,7 +12,7 @@
     <div class="row mt-5 mb-5">
         <?php if(isset($data['products'])): ?>
             <?php foreach($data['products'] as $product): ?>
-                <div class="col-sm-6 col-md-3 col-lg-3 mt-4">
+                <div class="col-sm-6 col-md-3 col-lg-3 mt-4" id="product_id_<?= $product->getProductId(); ?>">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-check d-inline">

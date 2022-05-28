@@ -6,7 +6,6 @@ $(document).ready(function(){
             values[i] = parseInt($(this).val());
         });
         values=JSON.stringify(values);
-        console.log(values)
         $.ajax({
             type:"POST",
             url:url,
@@ -15,7 +14,11 @@ $(document).ready(function(){
             },
             dataType: 'JSON',
             success: function(data){
-                   console.log(data);
+                if(data.length>0){
+                    $.each(data, function(index, value) {
+                        $('#product_id_'+value).remove();
+                    });
+                }
             }
         });
     });

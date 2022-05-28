@@ -44,6 +44,9 @@ class Database {
        $this->stmt = $this->dbh->prepare($sql);
 	}
 	//bind values
+    public function bindArray($param,$array){
+        $this->stmt->bindParam($param,$array);
+    }
 	public function bind($param, $value, $type = null){
 		if(is_null($type)){
 			switch (true) {
@@ -64,6 +67,9 @@ class Database {
 		$this->stmt->bindValue($param,$value,$type);
 	}
 	//execute prepared stmt
+    public function executeArray($array){
+        return $this->stmt->execute($array);
+    }
 	public function execute(){
 		return $this->stmt->execute();
 	}
@@ -74,6 +80,10 @@ class Database {
 	}
     public function fetchAssocArray(){
         $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function fetchAssocArrayParam($array){
+        $this->executeArray($array);
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function getResultsByClass($class){

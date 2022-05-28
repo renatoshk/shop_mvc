@@ -102,19 +102,21 @@ class ProductRepository implements RepositoryInterface
         return false;
     }
     //find by ids
-    public function findByIds($ids){
+    public function findByIds($ids,$fields){
+        $ids=implode(',',$ids);
         $db=new Database();
-        $db->query('SELECT * FROM products WHERE id IN (:ids)');
-        foreach ($ids as $id){
-            $db->bind(':ids',$id);
-            $db->execute();
-        }
-        $results=$db->fetchAssocArray();
-        echo "<pre>";
-        var_dump($results);die;
-        echo "</pre>";
+        $db->query('SELECT ' .$fields. ' FROM products WHERE  FIND_IN_SET(id, :ids)');
+        $db->bind(":ids",$ids);
+        return $db->getResultsByClass(new Product());
     }
     public function bulkDestroy($ids){
-
+        $ids=implode(',',$ids);
+        $db=new Database();
+        $db->query('DELETE products,product_attributes_values FROM products INNER JOIN product_attributes_values ON product_attributes_values.product_id=products.id WHERE FIND_IN_SET(products.id, :ids) ');
+        $db->bind(":ids",$ids);
+        if($db->execute()){
+            return true;
+        }
+        return false;
     }
 }
