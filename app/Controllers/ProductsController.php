@@ -8,6 +8,7 @@ use App\Libraries\BaseController;
 use App\Models\ProductCreationModel;
 use App\Services\ProductService;
 use App\Services\ProductTypeService;
+use App\Validation\ProductValidation;
 
 /**
  * 
@@ -17,10 +18,8 @@ class ProductsController extends BaseController implements Controller
 	public function index()
 	{
         $productService= new ProductService();
-        $data = [
-            'products'=>$productService->getProducts()
-        ];
-       $this->view('products/index', $data);
+        $data = ['products'=>$productService->getProducts()];
+        $this->view('products/index', $data);
 	}
 	public function create(){
 	    //get all product types
@@ -34,11 +33,17 @@ class ProductsController extends BaseController implements Controller
                 //init
                 $helper=new Helper();
                 $data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                //validation
+                $productValidation=new ProductValidation();
+                if(!$productValidation->validateProduct($data)){
+                    $helper->redirect('products/create');
+                }
+                //service logic
                 $productService=new ProductService();
-                if($productService->save($data)){
+                if($productService->save($data)) {
                     $helper->redirect('products');
                 }else{
-                    return false;
+                    $helper->redirect('products/create');
                 }
             }
         }catch (\Exception $e){

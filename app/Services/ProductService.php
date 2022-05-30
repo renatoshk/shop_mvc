@@ -24,9 +24,15 @@ class ProductService
     }
     public function save($data)
     {
+        //inits
         $productTypeRepository = new ProductTypeRepository();
         $currencyRepository = new CurrencyRepository();
         $attributesRepository = new AttributesRepository();
+        $productRepository=new ProductRepository();
+        //validation
+        if($productRepository->findBySku($data['sku'])){
+            return false;
+        }
         if (!$productType = $productTypeRepository->find($data['product_type_id'])) {
             return false;
         }
@@ -52,7 +58,6 @@ class ProductService
         $product->setPrice($productCreationModel->getProductPrice());
         $product->setCurrency($currency);
         $product->setProductType($productType);
-        $productRepository=new ProductRepository();
         if(!$productRepository->store($product)){
             return false;
         }

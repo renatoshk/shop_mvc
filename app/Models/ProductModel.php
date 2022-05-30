@@ -13,6 +13,7 @@ class ProductModel
 {
     private $productId;
     private $sku;
+    private $name;
     private $productTypeId;
     private $productTypeName;
     private $price;
@@ -23,6 +24,7 @@ class ProductModel
     {
         $this->setProductId($product->getId());
         $this->setSku($product->getSku());
+        $this->setName($product->getName());
         $this->setPrice($product->getPrice());
         $this->setCurrencySymbol($currency->getSymbol());
         $this->setProductTypeId($productType->getId());
@@ -42,6 +44,13 @@ class ProductModel
     }
     public function setSku($sku){
         $this->sku=$sku;
+    }
+    //sku
+    public function getName(){
+        return $this->name;
+    }
+    public function setName($name){
+        $this->name=$name;
     }
     //price
     public function getPrice(){

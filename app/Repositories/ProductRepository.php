@@ -109,6 +109,17 @@ class ProductRepository implements RepositoryInterface
         $db->bind(":ids",$ids);
         return $db->getResultsByClass(new Product());
     }
+    public function findBySku($sku){
+        $db=new Database();
+        $db->query('SELECT * FROM products WHERE sku=:sku');
+        $db->bind(":sku",$sku);
+        $db->singleRow();
+        $row=$db->rowCount();
+        if($row>0){
+            return true;
+        }
+        return false;
+    }
     public function bulkDestroy($ids){
         $ids=implode(',',$ids);
         $db=new Database();
