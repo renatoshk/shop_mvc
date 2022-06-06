@@ -12,6 +12,7 @@ use App\Repositories\ProductTypeRepository;
 
 class ProductService
 {
+    public $response;
     public function getProducts(){
         $productRepository=new ProductRepository();
         $products=$productRepository->all();
@@ -25,18 +26,18 @@ class ProductService
     public function save($data)
     {
         //inits
+        $productRepository=new ProductRepository();
         $productTypeRepository = new ProductTypeRepository();
         $currencyRepository = new CurrencyRepository();
         $attributesRepository = new AttributesRepository();
-        $productRepository=new ProductRepository();
-        //validation
-        if($productRepository->findBySku($data['sku'])){
+        //get product type
+        if(!$productType = $productTypeRepository->find($data['product_type_id'])) {
+            $this->response="Product Type don't exists!";
             return false;
         }
-        if (!$productType = $productTypeRepository->find($data['product_type_id'])) {
-            return false;
-        }
+        //get currency
         if (!$currency = $currencyRepository->find(1)) {
+            $this->response="Currency don't exists!";
             return false;
         }
         //get attributes by product type id

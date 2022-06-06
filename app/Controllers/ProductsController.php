@@ -35,7 +35,7 @@ class ProductsController extends BaseController implements Controller
                 $data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 //validation
                 $productValidation=new ProductValidation();
-                if(!$productValidation->validateProduct($data)){
+                if(!$productValidation->validate($data)){
                     $helper->redirect('products/create');
                 }
                 //service logic

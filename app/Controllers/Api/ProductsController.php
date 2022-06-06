@@ -2,7 +2,9 @@
 namespace App\Controllers\Api;
 
 use App\Libraries\BaseController;
+use App\Repositories\ProductRepository;
 use App\Services\ProductService;
+use App\Validation\ProductValidation;
 
 /**
  * 
@@ -10,6 +12,7 @@ use App\Services\ProductService;
 class ProductsController extends BaseController
 {
     //mass delete
+    public $response;
     public function bulkDestroy(){
         try {
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -42,5 +45,15 @@ class ProductsController extends BaseController
                 ),
             ));
         }
+    }
+    //check if sku is unique
+    public function checkSku(){
+        $sku=$_POST['sku'];
+        $productRepository=new ProductRepository();
+        if($productRepository->findBySku($sku)){
+            $this->response="Sku already exists! Please try another!";
+            echo json_encode($this->response);
+        }
+        return false;
     }
 }

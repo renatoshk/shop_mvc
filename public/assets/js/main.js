@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var url=$('#save-product-button').val();
     //validation fields
     $('#product_form').validate({
         subject: {
@@ -38,7 +39,7 @@ $(document).ready(function(){
                 required: 'Please, provide name.',
             },
             price: {
-                required: 'Please, provide name.',
+                required: 'Please, provide price.',
             },
             product_type_id: {
                 required: 'Please, provide product type.',
@@ -60,7 +61,20 @@ $(document).ready(function(){
             },
         },
         submitHandler: function (form) {
-            form.submit();
+            var sku = $('#sku').val();
+                $.ajax({
+                    type: 'POST',
+                    url: url+"/products/checkSku",
+                    data: {'sku':sku},
+                    dataType: 'JSON',
+                    success: function (response) {
+                           $("#sku-error").removeAttr('style').html(response);
+                    },
+                    error:function (){
+                       form.submit();
+                    }
+                });
+            return false;
         }
     });
 

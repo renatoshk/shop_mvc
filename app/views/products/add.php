@@ -3,7 +3,7 @@
             <div class="pt-5 d-flex align-items-center justify-content-between">
                 <h1>Product Add</h1>
                 <div class="float-right" role="group" aria-label="Basic example">
-                    <button type="submit" class="btn btn-success mr-2">Save</button>
+                    <button type="submit" class="btn btn-success mr-2" id="save-product-button" value="<?php echo APIURLROOT; ?>">Save</button>
                     <a class="btn btn-danger" href="<?php echo LINKROOT."products/index"?>" role="button">Cancel</a>
                 </div>
             </div>
